@@ -26,6 +26,7 @@
                 <input
                         type="checkbox"
                         name="done"
+                        data-th-checked="${todo.getDone()}"
                         data-th-id="${todo.getId() + 'done'}"
                         onchange="submitCheck(event)"
                 >

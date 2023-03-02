@@ -2,9 +2,6 @@ package com.progmatic.appauthdemo.controller;
 
 import com.progmatic.appauthdemo.model.ToDo;
 import com.progmatic.appauthdemo.model.ToDoRepository;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -62,4 +60,21 @@ public class ToDoController {
         return "redirect:/home";
     }
 
+    @PostMapping("/todo-delete")
+    public String todoDelete(
+            @RequestParam("todo_id") Long id
+    ) {
+        toDoRepository.deleteById(id);
+        return "redirect:/home";
+    }
+
+    @PostMapping("/todo-done")
+    public String todoDone(
+            @RequestParam("todo_id") Long id,
+            @RequestParam(value = "done", required = false) Boolean done
+    ) {
+        done = done != null;
+        toDoRepository.updateDoneById(done, id);
+        return "redirect:/home";
+    }
 }
