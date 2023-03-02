@@ -28,6 +28,9 @@ public class ToDo {
 
     private Boolean done;
 
+    @ManyToOne
+    private AppUser owner;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

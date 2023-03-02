@@ -5,9 +5,19 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 public interface ToDoRepository extends JpaRepository<ToDo, Long> {
+    @Query("select t from ToDo t where t.owner = ?1")
+    List<ToDo> findByOwner(AppUser owner);
+
     @Transactional
     @Modifying
-    @Query("update ToDo t set t.done = ?1 where t.id = ?2")
-    int updateDoneById(Boolean done, Long id);
+    @Query("delete from ToDo t where t.id = ?1 and t.owner = ?2")
+    void deleteByIdAndOwner(Long id, AppUser owner);
+
+    @Transactional
+    @Modifying
+    @Query("update ToDo t set t.done = ?1 where t.id = ?2 and t.owner = ?3")
+    int updateDoneByIdAndOwner(Boolean done, Long id, AppUser owner);
 }
