@@ -34,7 +34,12 @@ public class ToDoController {
         toDoRepository = repo;
     }
 
-    @GetMapping(path={"/", "", "/home", "/todos"})
+    @GetMapping(path={"/", "/home"})
+    public String homePage() {
+        return "home";
+    }
+
+    @GetMapping(path="/todos")
     public String listTodos(
         Model m,
         Principal principal

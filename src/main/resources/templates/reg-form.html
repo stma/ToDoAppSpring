@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration</title>
+  <link rel="stylesheet" href="/form.css">
+</head>
+<body>
+<h1>Registration</h1>
+
+<form action="/registration" data-th-action="@{/registration}" data-th-object="${newUser}" method="post">
+  <label for="contactName">Vezetek név:</label>
+  <input id="contactName" name="lastName" data-th-field="*{lastName}" type="text">
+  <p
+      style="color: red;"
+      data-th-if="${#fields.hasErrors('lastName')}"
+      data-th-errors="*{lastName}"
+  ></p>
+
+  <label for="rfName">Kereszt név:</label>
+  <input id="rfName" name="firstName" data-th-field="*{firstName}" type="text">
+  <p
+      style="color: red;"
+      data-th-if="${#fields.hasErrors('firstName')}"
+      data-th-errors="*{firstName}"
+  ></p>
+
+  <label for="rEmail">Email:</label>
+  <input id="rEmail" name="email" data-th-field="*{email}" type="email">
+  <p
+      style="color: red;"
+      data-th-if="${#fields.hasErrors('email')}"
+      data-th-errors="*{email}"
+  ></p>
+
+  <label for="contactEmail">Jelszó:</label>
+  <input id="contactEmail" name="password" data-th-field="*{password}" type="password">
+  <p
+      style="color: red;"
+      data-th-if="${#fields.hasErrors('password')}"
+      data-th-errors="*{password}"
+  ></p>
+
+  <input id="saveButton" type="submit" value="Regisztracio">
+</form>
+
+<a href="/home" data-th-href="@{/home}">
+  <button>Vissza</button>
+</a>
+
+</body>
+</html>
