@@ -18,11 +18,8 @@ import java.security.Principal;
 import java.util.List;
 
 @Controller
-//@RequiredArgsConstructor
 public class ToDoController {
 
-//    @NonNull
-//    @Autowired
     private ToDoRepository toDoRepository;
     private AppUserService userDetailsService;
 
