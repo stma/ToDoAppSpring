@@ -3,50 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <title>Registration</title>
-  <link rel="stylesheet" href="/form.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+
+
 </head>
 <body>
-<h1>Registration</h1>
 
-<form action="/registration" data-th-action="@{/registration}" data-th-object="${newUser}" method="post">
-  <label for="contactName">Vezetek név:</label>
-  <input id="contactName" name="lastName" data-th-field="*{lastName}" type="text">
-  <p
-      style="color: red;"
-      data-th-if="${#fields.hasErrors('lastName')}"
-      data-th-errors="*{lastName}"
-  ></p>
+<div data-th-replace="header.html"></div>
 
-  <label for="rfName">Kereszt név:</label>
-  <input id="rfName" name="firstName" data-th-field="*{firstName}" type="text">
-  <p
-      style="color: red;"
-      data-th-if="${#fields.hasErrors('firstName')}"
-      data-th-errors="*{firstName}"
-  ></p>
+<div class="ui text container" style="min-height: 60vh;">
+  <h1>Registration</h1>
 
-  <label for="rEmail">Email:</label>
-  <input id="rEmail" name="email" data-th-field="*{email}" type="email">
-  <p
-      style="color: red;"
-      data-th-if="${#fields.hasErrors('email')}"
-      data-th-errors="*{email}"
-  ></p>
+  <form
+    class="ui form"
+    data-th-classappend="${#fields.hasErrors('*')} ? error"
+    action="/registration"
+    data-th-action="@{/registration}"
+    data-th-object="${newUser}"
+    method="post"
+  >
+    <div class="field">
+      <label for="contactName">Vezetek név:</label>
+      <input id="contactName" name="lastName" data-th-field="*{lastName}" type="text">
+      <div
+          class="ui error message"
+          data-th-if="${#fields.hasErrors('lastName')}"
+          data-th-errors="*{lastName}"
+      ></div>
+    </div>
 
-  <label for="contactEmail">Jelszó:</label>
-  <input id="contactEmail" name="password" data-th-field="*{password}" type="password">
-  <p
-      style="color: red;"
-      data-th-if="${#fields.hasErrors('password')}"
-      data-th-errors="*{password}"
-  ></p>
+    <div class="field">
+      <label for="rfName">Kereszt név:</label>
+      <input id="rfName" name="firstName" data-th-field="*{firstName}" type="text">
+      <div
+          class="ui error message"
+          data-th-if="${#fields.hasErrors('firstName')}"
+          data-th-errors="*{firstName}"
+      ></div>
+    </div>
 
-  <input id="saveButton" type="submit" value="Regisztracio">
-</form>
+    <div class="field">
+      <label for="rEmail">Email:</label>
+      <input id="rEmail" name="email" data-th-field="*{email}" type="email">
+      <div
+          class="ui error message"
+          data-th-if="${#fields.hasErrors('email')}"
+          data-th-errors="*{email}"
+      ></div>
+    </div>
 
-<a href="/home" data-th-href="@{/home}">
-  <button>Vissza</button>
-</a>
+    <div class="field">
+      <label for="contactEmail">Jelszó:</label>
+      <input id="contactEmail" name="password" data-th-field="*{password}" type="password">
+      <div
+          class="ui error message"
+          data-th-if="${#fields.hasErrors('password')}"
+          data-th-errors="*{password}"
+      ></div>
+    </div>
 
+    <button class="ui primary button" type="submit">Regisztracio</button>
+  </form>
+
+  <a href="/home" data-th-href="@{/home}">
+    <button class="ui button">Vissza</button>
+  </a>
+</div>
+
+<div data-th-replace="footer.html"></div>
 </body>
 </html>

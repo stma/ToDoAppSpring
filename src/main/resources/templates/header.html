@@ -1,0 +1,33 @@
+<div class="ui sticky inverted segment">
+  <div class="ui text container">
+    <div class="ui inverted borderless main pointing menu">
+      <a class="header item" data-th-href="@{/todos}">
+        ToDoS
+      </a>
+
+      <div data-sec-authorize="isAuthenticated()" class="right menu">
+        <a class="item" data-th-href="@{/todo}">
+          New
+        </a>
+        <a class="item" href="@{/logout}">
+          Kilépés
+        </a>
+      </div>
+
+      <div data-sec-authorize="isAnonymous()" class="right menu">
+        <a class="item" href="@{/login}">
+          Belépés
+        </a>
+        <a class="item" data-th-href="@{/registration}" href="/registration">
+          <p>Regisztracio</p>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script>
+  $(function() {
+    $('.ui.sticky').sticky();
+  });
+</script>

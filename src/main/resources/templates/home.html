@@ -3,31 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo home page</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
 </head>
 <body>
-  <h1>Home Page</h1>
+    <div data-th-replace="header.html"></div>
 
-  <div data-sec-authorize="isAuthenticated()">
-    <h2>Hello <span data-sec-authentication="name"></span></h2>
-    <a href="/todos">
-      <p>Todos</p>
-    </a>
-    <a href="/logout">
-      <p>Logout</p>
-    </a>
-  </div>
-  <div data-sec-authorize="isAnonymous()">
-    <a href="/login">
-      <p>Login</p>
-    </a>
-    <a href="/registration">
-      <p>Regisztracio</p>
-    </a>
-  </div>
-  <div data-th-replace="footer.html"></div>
+    <div class="ui text container" style="min-height: 60vh;">
+        <h1>Home Page</h1>
+
+        <p>Üdv itt!</p>
+    </div>
+
+    <div data-th-replace="footer.html"></div>
 </body>
 </html>
